@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Apuntes 1º Bachillerato — Matemáticas & Física</title>
+  <style>
+    :root{
+      --blue:#1e3a8a;
+      --blue-2:#2b6cb0;
+      --muted:#f3f4f6;
+      --card:#ffffff;
+      --text:#222;
+      --radius:10px;
+      --gap:14px;
+      --maxw:980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg,#fbfdff 0%, #f6f9ff 100%);
+      color:var(--text);
+      margin:0;
+      padding:24px 12px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+    }
+    header{
+      text-align:center;
+      margin-bottom:18px;
+    }
+    header h1{margin:0;font-size:1.6rem;color:var(--blue)}
+    header p{margin:6px 0 0;color:#41567a}
+
+    /* Tabs */
+    .tabbar{display:flex;gap:8px;justify-content:center;margin:18px 0}
+    .tabbtn{
+      background:var(--card);
+      border:2px solid var(--blue);
+      color:var(--blue);
+      padding:10px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      transition:all .15s ease;
+    }
+    .tabbtn.active{background:var(--blue);color:white;box-shadow:0 6px 18px rgba(30,58,138,0.12)}
+
+    .panel-wrap{background:transparent;margin-top:8px}
+    .tabcontent{
+      display:none;
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 6px 18px rgba(38,63,111,0.06);
+      border:1px solid rgba(30,58,138,0.06);
+    }
+
+    /* Main accordions (topics) */
+    .accordion{
+      background:var(--blue);
+      color:white;
+      cursor:pointer;
+      padding:12px 14px;
+      width:100%;
+      border:none;
+      text-align:left;
+      font-size:1rem;
+      border-radius:8px;
+      margin-top:12px;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .accordion:hover{background:var(--blue-2)}
+    .accordion .chev{font-size:0.9rem;opacity:0.9}
+
+    .panel{display:none;padding:14px;background:var(--muted);border-radius:8px;margin-top:8px}
+    .panel h3{margin-top:0}
+    .panel ol, .panel ul{margin:8px 0 12px 20px}
+
+    /* "Mostrar soluciones" buttons */
+    .sol-btn{
+      margin-top:8px;
+      background:#f8fafc;
+      color:var(--blue);
+      border:1px dashed var(--blue);
+      padding:10px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .sol-panel{display:none;padding:12px;background:#fff;border-radius:8px;border:1px solid rgba(30,58,138,0.06);margin-top:8px}
+    .solution-step{margin-bottom:10px}
+    .muted{color:#4b5563;font-size:0.95rem}
+
+    /* Responsive */
+    @media (max-width:600px){
+      .tabbtn{padding:8px 10px;font-size:0.95rem}
+      body{padding:14px}
+    }
+  </style>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📘 Apuntes 1º Bachillerato — Matemáticas & Física</h1>
+      <p>Teoría, ejemplos, ejercicios y soluciones paso a paso (soluciones ocultas hasta que las necesites).</p>
+    </header>
+
+    <div class="tabbar" role="tablist">
+      <button class="tabbtn" id="tab-mates" onclick="openTab(event,'Matematicas')" aria-controls="Matematicas" aria-selected="true">Matemáticas</button>
+      <button class="tabbtn" id="tab-fisica" onclick="openTab(event,'Fisica')" aria-controls="Fisica" aria-selected="false">Física</button>
+    </div>
+
+    <div class="panel-wrap">
+      <!-- Matemáticas -->
+      <section id="Matematicas" class="tabcontent" role="tabpanel" aria-labelledby="tab-mates">
+
+        <button class="accordion" aria-expanded="false">🔹 Radicales <span class="chev">▸</span></button>
+        <div class="panel">
+          <h3>Definición</h3>
+          <p>La raíz \(n\)-ésima de un número real positivo \(a\) es el número que, elevado a \(n\), nos da \(a\). Se escribe \(\sqrt[n]{a}\).</p>
+          <p class="muted">Ejemplo: \(\sqrt[3]{8}=2\) porque \(2^3=8\).</p>
+
+          <h3>Propiedades</h3>
+          <ul>
+            <li>\(\sqrt[n]{a\cdot b}=\sqrt[n]{a}\cdot\sqrt[n]{b}\)</li>
+            <li>\(\sqrt[n]{\tfrac{a}{b}}=\tfrac{\sqrt[n]{a}}{\sqrt[n]{b}}\) (con \(b\neq0\))</li>
+            <li>\(\sqrt[m]{\sqrt[n]{a}}=\sqrt[mn]{a}\)</li>
+          </ul>
+
+          <h3>Ejercicios</h3>
+          <ol>
+            <li>Simplifica: \(\sqrt{72}\).</li>
+            <li>Calcula: \(\sqrt[3]{27\cdot 8}\).</li>
+            <li>Expresa en forma de potencia: \(\sqrt[4]{a^6}\).</li>
+          </ol>
+
+          <button class="sol-btn" aria-expanded="false">Mostrar soluciones</button>
+          <div class="sol-panel">
+            <h4>Soluciones — Radicales</h4>
+            <ol>
+              <li class="solution-step">
+                <strong>\(\sqrt{72}\)</strong><br>
+                Paso 1: Factoriza \(72 = 2^3\cdot3^2\).<br>
+                Paso 2: Agrupa pares de factores para extraer cuadrados: hay un par de 3 (\(3^2\)) y un par dentro de \(2^3\) (\(2^2\)).<br>
+                Paso 3: Extrae lo que está en par: \(\sqrt{72}=\sqrt{2^3\cdot3^2}=2\cdot3\sqrt{2}=6\sqrt{2}.\)
+              </li>
+
+              <li class="solution-step">
+                <strong>\(\sqrt[3]{27\cdot8}\)</strong><br>
+                Observa que \(\sqrt[3]{27}=3\) y \(\sqrt[3]{8}=2\). Por tanto \(\sqrt[3]{27\cdot8}=3\cdot2=6\).
+              </li>
+
+              <li class="solution-step">
+                <strong>\(\sqrt[4]{a^6}\)</strong><br>
+                Convierte a potencia: \(\sqrt[4]{a^6}=a^{6/4}=a^{3/2}\). Esto también se puede escribir como \(a^{1+1/2}=a\cdot a^{1/2}=a\sqrt{a}.\)
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <button class="accordion" aria-expanded="false">🔹 Intervalos <span class="chev">▸</span></button>
+        <div class="panel">
+          <h3>Definición</h3>
+          <p>Un intervalo es el conjunto de números reales comprendidos entre dos extremos, que pueden incluir o no dichos extremos.</p>
+          <ul>
+            <li>Abierto: \((a,b)\)</li>
+            <li>Cerrado: \([a,b]\)</li>
+            <li>Semiabierto: \((a,b]\) o \([a,b)\)</li>
+          </ul>
+
+          <h3>Operaciones</h3>
+          <p><strong>Unión</strong> → todos los elementos de ambos intervalos. <strong>Intersección</strong> → elementos comunes.</p>
+          <p class="muted"><strong>Ejemplo:</strong> \([1,4]\cup[3,6]=[1,6]\)</p>
+
+          <h3>Ejercicios</h3>
+          <ol>
+            <li>Representa en la recta real: \(( -\infty,3]\).</li>
+            <li>Calcula: \([2,7]\cap[5,9]\).</li>
+            <li>Expresa en palabras el intervalo \((0,+\infty)\).</li>
+          </ol>
+
+          <button class="sol-btn" aria-expanded="false">Mostrar soluciones</button>
+          <div class="sol-panel">
+            <h4>Soluciones — Intervalos</h4>
+            <ol>
+              <li class="solution-step">
+                <strong>Representación de \(( -\infty,3]\)</strong><br>
+                Es el conjunto de todos los números menores o iguales que 3. En la recta real se dibuja una flecha hacia la izquierda (porque llega hasta -∞) y un punto relleno en 3 indicando que 3 sí está incluido.
+              </li>
+
+              <li class="solution-step">
+                <strong>\([2,7]\cap[5,9]=\ ?</strong><br>
+                Intersección = valores comunes a ambos intervalos. El tramo común comienza en el máximo de los extremos izquierdos (max(2,5)=5) y termina en el mínimo de los extremos derechos (min(7,9)=7). Resultado: \([5,7]\).
+              </li>
+
+              <li class="solution-step">
+                <strong>\((0,+\infty)\)</strong><br>
+                En palabras: "todos los números reales positivos (mayores que 0)".
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <button class="accordion" aria-expanded="false">🔹 Logaritmos <span class="chev">▸</span></button>
+        <div class="panel">
+          <h3>Definición</h3>
+          <p>El logaritmo en base \(b\) de \(a\) es el exponente \(x\) tal que \(b^x=a\). Se escribe \(\log_b a\).</p>
+          <p class="muted">Ejemplo: \(\log_2 8=3\) porque \(2^3=8\).</p>
+
+          <h3>Propiedades</h3>
+          <ul>
+            <li>\(\log_b (a\cdot c)=\log_b a + \log_b c\)</li>
+            <li>\(\log_b \tfrac{a}{c}=\log_b a - \log_b c\)</li>
+            <li>\(\log_b (a^n)=n\log_b a\)</li>
+            <li>Cambio de base: \(\log_b a=\tfrac{\log_k a}{\log_k b}\)</li>
+          </ul>
+
+          <h3>Ejercicios</h3>
+          <ol>
+            <li>Calcula: \(\log_5 25\).</li>
+            <li>Desarrolla: \(\log_2 (32/4)\).</li>
+            <li>Transforma a otra base: \(\log_3 81\).</li>
+          </ol>
+
+          <button class="sol-btn" aria-expanded="false">Mostrar soluciones</button>
+          <div class="sol-panel">
+            <h4>Soluciones — Logaritmos</h4>
+            <ol>
+              <li class="solution-step">
+                <strong>\(\log_5 25\)</strong><br>
+                Observa que \(25=5^2\). Por tanto \(\log_5 25=2\).
+              </li>
+
+              <li class="solution-step">
+                <strong>\(\log_2 (32/4)\)</strong><br>
+                Paso 1: Simplifica dentro del logaritmo: \(32/4=8\).<br>
+                Paso 2: \(\log_2 8\). Como \(8=2^3\), entonces \(\log_2 8=3\).
+              </li>
+
+              <li class="solution-step">
+                <strong>\(\log_3 81\)</strong><br>
+                \(81=3^4\), por tanto \(\log_3 81=4\).
+              </li>
+            </ol>
+          </div>
+        </div>
+        <button class="accordion" aria-expanded="false">🔹 Propiedades e identidades de radicales <span class="chev">▸</span></button>
+        <div class="panel">
+          <h3>Listado de propiedades e identidades</h3>
+          <p>A continuación tienes las propiedades principales (expresadas también como potencias), con ejemplos cortos:</p>
+          <ul>
+            <li><strong>Definición:</strong> \(\sqrt[n]{a}=b\iff b^n=a\). Ejemplo: \(\sqrt[3]{27}=3\).</li>
+            <li><strong>Relación con potencias:</strong> \(\sqrt[n]{a}=a^{1/n},\quad\sqrt[n]{a^m}=a^{m/n}\). Ejemplo: \(\sqrt[4]{x^6}=x^{3/2}\).</li>
+            <li><strong>Exponentes negativos:</strong> \(a^{-n}=\dfrac{1}{a^n},\quad a^{-m/n}=\dfrac{1}{a^{m/n}}=\dfrac{1}{\sqrt[n]{a^m}}\). Ejemplo: \(8^{-1/3}=1/2\).</li>
+            <li><strong>Producto:</strong> \(\sqrt[n]{a}\cdot\sqrt[n]{b}=\sqrt[n]{ab}\). Ejemplo: \(\sqrt{2}\cdot\sqrt{18}=6\).</li>
+            <li><strong>Cociente:</strong> \(\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}=\sqrt[n]{\tfrac{a}{b}}\) (\(b\neq0\)).</li>
+            <li><strong>Radical de un radical:</strong> \(\sqrt[m]{\sqrt[n]{a}}=\sqrt[mn]{a}\). Ejemplo: \(\sqrt{\sqrt[3]{8}}=\sqrt[6]{8}\).</li>
+            <li><strong>Potencia de un radical:</strong> \((\sqrt[n]{a})^m=\sqrt[n]{a^m}\). Ejemplo: \((\sqrt{5})^2=5\).</li>
+            <li><strong>Extracción de factores:</strong> si \(a^n\) es factor, \(\sqrt[n]{a^n\cdot b}=a\cdot\sqrt[n]{b}\). Ejemplo: \(\sqrt{72}=6\sqrt{2}\).</li>
+            <li><strong>Igualdad:</strong> \(\sqrt[n]{a}=\sqrt[n]{b}\iff a=b\).</li>
+            <li><strong>Racionalización de denominadores:</strong> ejemplo sencillo: \(\dfrac{1}{\sqrt{a}}=\dfrac{\sqrt{a}}{a}\). Para binomios usar el conjugado.</li>
+          </ul>
+
+          <h3>Ejemplos rápidos</h3>
+          <ol>
+            <li>Simplifica: \(\sqrt[3]{54}\).</li>
+            <li>Expresa como potencia: \(\sqrt[5]{x^{10}}\).</li>
+            <li>Racionaliza: \(\dfrac{3}{2+\sqrt{5}}\).</li>
+          </ol>
+
+          <button class="sol-btn" aria-expanded="false">Mostrar soluciones</button>
+          <div class="sol-panel">
+            <h4>Soluciones — Propiedades de radicales</h4>
+            <ol>
+              <li class="solution-step">
+                <strong>\(\sqrt[3]{54}\)</strong><br>
+                Factoriza: \(54=2\cdot3^3\). Entonces \(\sqrt[3]{54}=\sqrt[3]{2\cdot3^3}=3\sqrt[3]{2}\) (se extrae el cubo completo \(3^3\)).
+              </li>
+
+              <li class="solution-step">
+                <strong>\(\sqrt[5]{x^{10}}\)</strong><br>
+                Usa la regla de potencias: \(\sqrt[5]{x^{10}}=x^{10/5}=x^2.\)
+              </li>
+
+              <li class="solution-step">
+                <strong>\(\dfrac{3}{2+\sqrt{5}}\)</strong><br>
+                Multiplica por el conjugado: \(\dfrac{3}{2+\sqrt{5}}\cdot\dfrac{2-\sqrt{5}}{2-\sqrt{5}}=\dfrac{3(2-\sqrt{5})}{4-5}=\dfrac{3(2-\sqrt{5})}{-1}=-6+3\sqrt{5}.\)
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- Física -->
+      <section id="Fisica" class="tabcontent" role="tabpanel" aria-labelledby="tab-fisica">
+
+        <button class="accordion" aria-expanded="false">🔹 Magnitudes <span class="chev">▸</span></button>
+        <div class="panel">
+          <h3>Definición</h3>
+          <p>Las magnitudes físicas son propiedades que se pueden medir. Se distinguen magnitudes fundamentales (base del Sistema Internacional) y magnitudes derivadas.</p>
+
+          <h3>Ejemplos</h3>
+          <p><strong>Fundamentales:</strong> longitud (m), masa (kg), tiempo (s), corriente eléctrica (A), temperatura (K), cantidad de sustancia (mol), intensidad luminosa (cd).</p>
+          <p><strong>Derivadas:</strong> velocidad, fuerza, energía, presión, etc.</p>
+
+          <h3>Ejercicios</h3>
+          <ol>
+            <li>Clasifica: presión, potencia, volumen (¿fundamental o derivada?).</li>
+            <li>Indica las unidades SI de: fuerza, energía, aceleración.</li>
+          </ol>
+
+          <button class="sol-btn" aria-expanded="false">Mostrar soluciones</button>
+          <div class="sol-panel">
+            <h4>Soluciones — Magnitudes</h4>
+            <ol>
+              <li class="solution-step">
+                <strong>Presión, potencia, volumen:</strong><br>
+                - Presión: <em>derivada</em> (unidad Pa = N/m<sup>2</sup>)<br>
+                - Potencia: <em>derivada</em> (unidad W = J/s)<br>
+                - Volumen: <em>derivada</em> (unidad m<sup>3</sup>)
+              </li>
+
+              <li class="solution-step">
+                <strong>Unidades SI:</strong><br>
+                - Fuerza: newton (N) = kg·m·s<sup>-2</sup><br>
+                - Energía: joule (J) = kg·m<sup>2</sup>·s<sup>-2</sup><br>
+                - Aceleración: metro por segundo al cuadrado (m·s<sup>-2</sup>)
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <button class="accordion" aria-expanded="false">🔹 Análisis dimensional <span class="chev">▸</span></button>
+        <div class="panel">
+          <h3>Definición</h3>
+          <p>El análisis dimensional expresa las magnitudes en función de las básicas (M, L, T, ...). Se usa para comprobar la coherencia de fórmulas y detectar errores.</p>
+
+          <h3>Ejemplo</h3>
+          <p>Energía cinética: \(E_c=\tfrac{1}{2}mv^2\). Dimensionalmente: \([m]=M, [v]=LT^{-1}\Rightarrow [E_c]=M(LT^{-1})^2=ML^2T^{-2}.\)</p>
+
+          <h3>Ejercicios</h3>
+          <ol>
+            <li>Comprueba dimensionalmente la fórmula: \(F=ma\).</li>
+            <li>Analiza la fórmula del período del péndulo: \(T=2\pi\sqrt{\tfrac{l}{g}}\).</li>
+          </ol>
+
+          <button class="sol-btn" aria-expanded="false">Mostrar soluciones</button>
+          <div class="sol-panel">
+            <h4>Soluciones — Análisis dimensional</h4>
+            <ol>
+              <li class="solution-step">
+                <strong>\(F=ma\)</strong><br>
+                Dimensiones: \([F]=MLT^{-2}\). Para la derecha: \([m]=M\) y \([a]=LT^{-2}\), multiplicando: \(M\cdot LT^{-2}=MLT^{-2}\). Coincide → fórmula dimensionalmente correcta.
+              </li>
+
+              <li class="solution-step">
+                <strong>\(T=2\pi\sqrt{\tfrac{l}{g}}\)</strong><br>
+                Dimensiones: \([l]=L\), \([g]=LT^{-2}\). Entonces \(\tfrac{l}{g}\) tiene dimensión \(\tfrac{L}{LT^{-2}}=T^2\). La raíz cuadrada da \(T\), y multiplicar por \(2\pi\) no cambia dimensiones. Resultado: \([T]=T\) → coherente.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <button class="accordion" aria-expanded="false">🔹 Errores de medida <span class="chev">▸</span></button>
+        <div class="panel">
+          <h3>Tipos de error</h3>
+          <ul>
+            <li><strong>Error absoluto:</strong> \(E_a=|x_{medido}-x_{real}|\).</li>
+            <li><strong>Error relativo:</strong> \(E_r=\dfrac{E_a}{x_{real}}\).</li>
+          </ul>
+
+          <h3>Propagación (reglas sencillas)</h3>
+          <ul>
+            <li>Suma/resta: se suman los errores absolutos.</li>
+            <li>Multiplicación/división: se suman los errores relativos.</li>
+          </ul>
+
+          <h3>Ejemplo práctico (ya mostrado antes)</h3>
+          <p>Medimos \(L=10,0\pm0,1\) cm y \(W=5,0\pm0,1\) cm.</p>
+          <p>Área: \(A=LW=50,0\) cm<sup>2</sup>.<br>
+          Errores relativos: \(\tfrac{0,1}{10,0}=0,01\) y \(\tfrac{0,1}{5,0}=0,02\). Suma: 0,03 → error absoluto en el área: \(50\cdot0,03=1,5\). Resultado: \(A=50,0\pm1,5\) cm<sup>2</sup>.</p>
+
+          <h3>Ejercicios</h3>
+          <ol>
+            <li>Calcula el error relativo si medimos una masa de \(m=2,00\pm0,05\) kg.</li>
+            <li>Un tiempo se mide como \(t=4,0\pm0,1\) s. ¿Cuál es el error absoluto y relativo?</li>
+          </ol>
+
+          <button class="sol-btn" aria-expanded="false">Mostrar soluciones</button>
+          <div class="sol-panel">
+            <h4>Soluciones — Errores de medida</h4>
+            <ol>
+              <li class="solution-step">
+                <strong>\(m=2{,}00\pm0{,}05\) kg</strong><br>
+                Error absoluto: \(E_a=0{,}05\) kg.<br>
+                Error relativo: \(E_r=\dfrac{0{,}05}{2{,}00}=0{,}025=2{,}5\%\).
+              </li>
+
+              <li class="solution-step">
+                <strong>\(t=4{,}0\pm0{,}1\) s</strong><br>
+                Error absoluto: \(E_a=0{,}1\) s.<br>
+                Error relativo: \(E_r=\dfrac{0{,}1}{4{,}0}=0{,}025=2{,}5\%\).
+              </li>
+            </ol>
+          </div>
+
+        </div>
+
+      </section>
+    </div>
+  </div>
+
+  <script>
+    /* Tabs */
+    function openTab(evt, tabName){
+      var i, contents, tabs;
+      contents = document.getElementsByClassName('tabcontent');
+      for(i=0;i<contents.length;i++) contents[i].style.display='none';
+      tabs = document.getElementsByClassName('tabbtn');
+      for(i=0;i<tabs.length;i++) tabs[i].classList.remove('active');
+
+      document.getElementById(tabName).style.display='block';
+      evt.currentTarget.classList.add('active');
+    }
+    // Abrir matemáticas por defecto
+    document.getElementById('tab-mates').click();
+
+    /* Accordion (topics) */
+    var acc = document.getElementsByClassName('accordion');
+    for (let i=0;i<acc.length;i++){
+      acc[i].addEventListener('click', function(){
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        // toggle attribute
+        this.setAttribute('aria-expanded', (!expanded).toString());
+        // rotate chevron
+        var chev = this.querySelector('.chev');
+        if(!expanded){chev.textContent='▾'} else {chev.textContent='▸'}
+        var panel = this.nextElementSibling;
+        if(panel.style.display === 'block'){
+          panel.style.display='none';
+        } else {
+          panel.style.display='block';
+          // ensure math in the panel is typeset
+          if(window.MathJax && MathJax.typesetPromise){ MathJax.typesetPromise([panel]).catch(function(){/*ignore*/}); }
+        }
+      });
+    }
+
+    /* Soluciones (botones) */
+    var solBtns = document.getElementsByClassName('sol-btn');
+    for (let i=0;i<solBtns.length;i++){
+      solBtns[i].addEventListener('click', function(){
+        var panel = this.nextElementSibling;
+        var open = this.getAttribute('aria-expanded') === 'true';
+        if(open){
+          panel.style.display='none';
+          this.setAttribute('aria-expanded','false');
+          this.textContent='Mostrar soluciones';
+        } else {
+          panel.style.display='block';
+          this.setAttribute('aria-expanded','true');
+          this.textContent='Ocultar soluciones';
+          if(window.MathJax && MathJax.typesetPromise){ MathJax.typesetPromise([panel]).catch(function(){/*ignore*/}); }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
